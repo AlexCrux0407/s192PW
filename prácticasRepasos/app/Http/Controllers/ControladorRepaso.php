@@ -8,7 +8,12 @@ class ControladorRepaso extends Controller
 {
     public function index()
     {
-        return view('repaso1');
+        return view('repaso1', [
+            'cantidad' => null, 
+            'unidad' => null,
+            'result' => null,
+            'convertida' => null
+        ]);
     }
 
     public function convertidor(Request $request)
@@ -19,7 +24,12 @@ class ControladorRepaso extends Controller
 
         $result = $this->convertirUnidades($cantidad, $unidad, $convertida);
 
-        return view('repaso1', ['result' => $result]);
+        return view('repaso1', [
+            'cantidad' => $cantidad, 
+            'unidad' => $unidad,
+            'result' => $result,
+            'convertida' => $convertida
+        ]);
     }
 
     private function convertirUnidades($cantidad, $unidad, $convertida)
@@ -29,15 +39,15 @@ class ControladorRepaso extends Controller
                 'GB'=> 1024,
                 'TB' => 1024*1024   
             ];
-            if(!isset($unidades[$unidad]) || !isset($unidades[$convertida]))
-            {
+            if (!isset($unidades[$unidad]) || !isset($unidades[$convertida])) {
                 return "Unidad inválida";
             }
-            $cantidadMB=$cantidad * $unidades[@unidad];
 
-            $cantidad_convertida = $cantidadMB / $unidades[@unidad];
+            $cantidadMB = $cantidad * $unidades[$unidad];
 
-            return '{$cantidad} {$unidad} equivalen a {$cantidad_convertida} {$convertida}.';
+            $cantidad_convertida = $cantidadMB / $unidades[$convertida];
+
+            return "{$cantidad} {$unidad} equivalen a {$cantidad_convertida} {$convertida}.";
         }
         
 }
