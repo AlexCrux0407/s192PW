@@ -1,13 +1,16 @@
 @extends('layouts.app')
 
 @section('contenido')
-<div class="container"></div>
-    <div class="jumbotron mt-5">
-        <h1 class="display-4">Portada práctica de repaso </h1>
-        <p class="lead">Alumno: Alexis Guadarrama Cruz.</p>
+<div class="container mt-5">
+    <div class="jumbotron bg-light shadow-sm p-5 rounded">
+        <h1 class="display-4 text-primary font-weight-bold">Portada de la práctica de repaso</h1>
+        <p class="lead text-secondary">Alumno: <span class="text-dark">Alexis Guadarrama Cruz</span></p>
         <hr class="my-4">
-        <p>Grupo S192</p>
-        <a class="btn btn-primary btn-lg" href="{{ route('repaso1') }}">Ir a la página principal</a>
+        <p class="text-muted">Grupo: <strong>S192</strong></p>
+        <p class="text-muted">En este sitio puedes repasar los conceptos que hemos aprendido en clase y acceder al convertidor de unidades.</p>
+        <a class="btn btn-primary btn-lg mt-3" href="{{ route('repaso1') }}" role="button">
+            <i class="fas fa-calculator"></i> Ir a la página de conversión
+        </a>
     </div>
 </div>
 @endsection
