@@ -8,6 +8,8 @@ Route::get('/', [ControladorInicio::class, 'index']);
 
 Route::get('/repaso1', [ControladorRepaso::class, 'index'])->name('repaso1');
 
+Route::get('/convertidor', [ControladorRepaso::class, 'convertidor'])->name('convertidor');
+
 Route::get('/', function () {
     return view('welcome');
 });

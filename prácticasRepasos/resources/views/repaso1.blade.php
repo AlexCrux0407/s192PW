@@ -14,10 +14,21 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="valor">Valor en unidades anteriores:</label>
-            <input type="number" class="form-control" id="valor" name="valor" placeholder="Ingrese un valor">
+            <label for="convertida">A</label>
+            <select class='form-control' id='convertida' name='convertida' required>
+                <option value="MB">MB</option>
+                <option value="GB">GB</option>
+                <option value="TB">TB</option>
+            </select>        
         </div>
-        <button type="submit" class="btn btn-primary">Convertir</button>
-    </form
+        <button type='submit' class='btn btn-primary'>Convertir</button>
+    </form>
+    @if(isset($result))
+    <div class="alert alert-succes mt-4">
+        El resultado es: {{ $result }} {{ $convertida }}
+    </div>
+    @endif
 
 </div>
+
+@endsection
