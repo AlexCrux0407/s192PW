@@ -12,4 +12,3 @@
     <x-Alert tipo="warning"> Precaucion </x-Alert>
     <x-Alert tipo="danger"> Peligro </x-Alert>
     @endsection
-    
