@@ -18,10 +18,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link {{ request()->routeIs('rutaformulario')?'text-danger':''}}" href="{{ route('rutaformulario') }}">Registro de Clientes</a>
+                        <a class="nav-link {{ request()->routeIs('rutaformulario')?'text-danger':''}}" href="{{ route('rutaformulario') }}">{{__('Registro Clientes')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('rutaclientes')?'text-danger':''}}"  href="{{ route('rutaclientes') }}">Consulta Clientes</a>
+                        <a class="nav-link {{ request()->routeIs('rutaclientes')?'text-danger':''}}"  href="{{ route('rutaclientes') }}">{{__('Consulta Clientes')}}</a>
                     </li>
                 </ul>
             </div>
