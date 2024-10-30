@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    @vite([resources/js/app.js])
+    @vite(["resources/js/app.js"])
 
     <title>@yield('titulo')</title>
 </head>
@@ -24,10 +24,6 @@
                 <a class="nav-link" href="#">Registro de libro</a>
               </li>
 
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
             </ul>
           </div>
         </div>
