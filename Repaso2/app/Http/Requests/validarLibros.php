@@ -26,7 +26,7 @@ class validarLibros extends FormRequest
             "titulo" => "required|string|max:150|min:3",
             "autor" => "required|string|max:100|min:3",
             "paginas" => "required|integer|min:1",
-            "año" => "required|integer|digits:4|min:1000|max:" . date('Y'),
+            "año" => "required|integer|digits:4|min:1000|max:2024" . date('Y'),
             "mail" => "required|email"
         ];
     }

@@ -5,43 +5,43 @@
     <div class="card font-monospace">
         
         <div class="card-header fs-5 text-center text-primary">
-            Registro Libros
+            {{__('register.header')}}
         </div>  
             <div class="card-body text-justify">
 
             <form action="/enviarLibro" method="POST">
             @csrf    
             <div class="mb-3">
-                    <label for=ISBN class="form-label">ISBN:</label>
+                    <label for=ISBN class="form-label">{{__('register.isbn')}}:</label>
                     <input type="number" class="form-control" id="ISBN" name="ISBN" required value="{{old('isbn')}}">
                 </div> 
 
                 <div class="mb-3">
-                    <label for=titulo class="form-label">Título:</label>
+                    <label for=titulo class="form-label">{{__('register.titulo')}}:</label>
                     <input type="text" class="form-control" id="titulo" name="titulo" required value="{{old('titulo')}}">
                 </div> 
 
                 <div class="mb-3">
-                    <label for=autor class="form-label">Autor:</label>
+                    <label for=autor class="form-label">{{ __('register.autor') }}:</label>
                     <input type="text" class="form-control" id="autor" name="autor" required value="{{old('autor')}}">
                 </div> 
 
                 <div class="mb-3">
-                    <label for=paginas class="form-label">Páginas:</label>
+                    <label for=paginas class="form-label">{{ __('register.pages') }}:</label>
                     <input type="number" class="form-control" id="paginas" name="paginas" required value="{{old('paginas')}}">
                 </div> 
 
                 <div class="mb-3">
-                    <label for=año class="form-label">Año:</label>
+                    <label for=año class="form-label">{{ __('register.año') }}:</label>
                     <input type="number" class="form-control" id="año" name="año" requiredvalue="{{old('año')}}">
                 </div> 
 
                 <div class="mb-3">
-                    <label for=mail class="form-label">Email de la editorial:</label>
+                    <label for=mail class="form-label">{{ __('register.email') }}:</label>
                     <input type="email" class="form-control" id="mail" name="mail" required value="{{old('mail')}}">
                 </div> 
 
-                <button type='submit' class="btn btn-success btn-sm">Guardar libro</button>
+                <button type='submit' class="btn btn-success btn-sm">{{ __('register.guardar') }}</button>
 
             </form>
         </div>
