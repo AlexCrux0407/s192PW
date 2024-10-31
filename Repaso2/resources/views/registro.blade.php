@@ -47,6 +47,17 @@
         </div>
     </div>
 </div>
+
+@if(session('exito'))
+    <script>
+        Swal.fire({
+            title: '¡Registro exitoso!',
+            text: "{{ session('exito') }}",
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
 @if($errors->any())
     <script>
         Swal.fire({
