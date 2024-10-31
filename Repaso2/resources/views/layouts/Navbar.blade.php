@@ -27,7 +27,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="{{route('rutahome')}}">Biblioteca</a>
+            <a class="navbar-brand fw-bold" href="{{route('rutahome')}}">El Rincón Del Cardenal</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -50,7 +50,7 @@
     
     <footer class="bg-dark text-white text-center py-3">
         <div class="container">
-            <p class="mb-1">Biblioteca Central</p>
+            <p class="mb-1">El Rincón Del Cardenal</p>
             <p class="mb-0">© {{ \Carbon\Carbon::now()->format('d F Y') }} - Todos los derechos reservados.</p>
         </div>
     </footer>
