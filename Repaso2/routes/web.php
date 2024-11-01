@@ -11,9 +11,7 @@ Route::get('/registro',[controladorVistas::class,'registro'])->name('rutaregistr
 
 Route::post('/enviarLibro',[controladorVistas::class, 'procesarlibro'])->name('rutaEnviar');
 
-Route::get('/test', function () {app()->setLocale('es');
-    return view('registro');
-});
+
 
 
 
