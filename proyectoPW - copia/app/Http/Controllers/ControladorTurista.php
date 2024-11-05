@@ -9,14 +9,17 @@ use Validator;
 
 class controladorTurista extends Controller
 {
-    public function buscarVuelo(Request $request) {
-        $validator = Validator::make($request->all(), (new validadorBuscarVuelo)->rules());
-        if ($validator->fails()) {
-            session()->flash('errors_vuelo', $validator->errors());
-            return redirect()->back()->withInput();
+    public function buscarVuelo(validadorBuscarVuelo $request)
+    {
+        $vueloDisponible = true;
+    
+        if ($vueloDisponible) {
+            return redirect()->back()->with('success_vuelo', 'Vuelo encontrado satisfactoriamente.');
+        } else {
+            return redirect()->back()->withErrors(['error_vuelo' => 'No se encontraron vuelos disponibles.']);
         }
-        return redirect()->back()->with('success_vuelo', 'Vuelo encontrado satisfactoriamente.');
     }
+    
     
     public function buscarHotel(Request $request) {
         $validator = Validator::make($request->all(), (new validadorBuscarHotel)->rules());
@@ -55,4 +58,9 @@ class controladorTurista extends Controller
 
         return redirect()->route('inicio')->with('success', 'Registro exitoso');
     }
+    public function reservarServicio(Request $request) {
+        $total = ($request->vuelo_precio * $request->num_pasajeros) + ($request->hotel_precio * $request->num_noches);
+        return back()->with('success', "Reservación realizada con éxito. Total a pagar: $${total}");
+    }
+    
 }

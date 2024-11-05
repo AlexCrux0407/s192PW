@@ -22,9 +22,20 @@ class validadorBuscarVuelo extends FormRequest
     public function rules(): array
     {
         return [
-            'fecha' => 'required|date|after:today|before_or_equal:' . now()->addYears(2)->format('Y-m-d'),
-            'origen' => 'required|string',
-            'destino' => 'required|string',
+            'origen' => 'required|string|max:50',
+            'destino' => 'required|string|max:50|different:origen',
+            'fecha' => 'required|date|after_or_equal:today',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'origen.required' => 'El campo origen es obligatorio.',
+            'destino.required' => 'El campo destino es obligatorio.',
+            'destino.different' => 'El destino debe ser diferente del origen.',
+            'fecha.required' => 'La fecha es obligatoria.',
+            'fecha.date' => 'La fecha debe ser una fecha válida.',
+            'fecha.after_or_equal' => 'La fecha debe ser hoy o en el futuro.',
         ];
     }
 }

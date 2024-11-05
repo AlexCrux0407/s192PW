@@ -4,12 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Document</title>
+    <title>Turista sin Mapas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #77B0AA;
+        }
+
         .navbar {
+            z-index: 1050;
+            position: fixed;
+            top: 0;
+            width: 100%;
+
             background-color: #E3FEF7;
             height: 60px;
             margin: 20px;
@@ -44,12 +63,6 @@
             font-size: 1.25rem;
         }
 
-        .navbar-toggler:focus,
-        .btn-close:focus {
-            box-shadow: none;
-            outline: none;
-        }
-
         .nav-link {
             color: #135D66;
             font-weight: 500;
@@ -57,149 +70,67 @@
         }
 
         .nav-link:hover,
-        .nav-link:active {
-            color: #003C43;
-        }
-
-        @media (min-width: 991px) {
-            .nav-link::before {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 100%;
-                height: 2px;
-                background-color: #77B0AA;
-                visibility: hidden;
-                transition: 0.3s ease-in-out;
-            }
-
-            .nav-link:hover::before,
-            .nav-link.active::before {
-                width: 100%;
-                visibility: visible;
-            }
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: #77B0AA;
-        }
-
-        .wrapper {
-            width: 420px;
-            background: #135D66;
-            border: 2px solid rgba(255, 255, 255, .2);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-            color: #E3FEF7;
-            border-radius: 10px;
-            padding: 30px 40px;
-        }
-
-        .wrapper h1 {
-            font-size: 36px;
-            text-align: center;
-        }
-
-        .wrapper .input-box {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            margin: 30px 0;
-        }
-
-        .input-box input {
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            border: none;
-            outline: none;
-            border: 2px solid rgba(255, 255, 255, .2);
-            border-radius: 40px;
-            font-size: 16px;
-            color: #E3FEF7;
-            padding: 20px 45px 20px 20px;
-        }
-
-        .input-box input::placeholder {
-            color: #E3FEF7;
-        }
-
-        .input-box i {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-        }
-
-        .remember-forgot {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14.5px;
-            margin: -15px 0 15px;
-        }
-
-        .remember-forgot label input {
-            accent-color: #E3FEF7;
-            margin-right: 3px;
-        }
-
-        .remember-forgot a {
-            color: #E3FEF7;
-            text-decoration: none;
-        }
-
-        .remember-forgot a:hover {
-            text-decoration: underline;
-        }
-
-        .wrapper .btn {
-            width: 100%;
-            height: 45px;
-            background: #E3FEF7;
-            border: none;
-            outline: none;
-            border-radius: 40px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-            cursor: pointer;
-            font-size: 16px;
-            color: #003C43;
-            font-weight: 600;
-        }
-
-        .register-link {
-            font-size: 14.5px;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .register-link p a {
-            color: #E3FEF7;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .register-link p a:hover {
-            text-decoration: underline;
-        }
-
         .nav-link.active {
             color: #003C43;
             font-weight: bold;
-            border-bottom: 2px solid #003C43;
+        }
+
+        .card {
+            background-color: #135D66;
+            color: #E3FEF7;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+            padding: 20px;
+        }
+
+        .card h4 {
+            text-align: center;
+            color: #E3FEF7;
+            font-weight: 500;
+        }
+
+        .card-body .form-label {
+            color: #E3FEF7;
+            font-weight: 500;
+        }
+
+        .form-select,
+        .form-control,
+        .btn {
+            border-radius: 10px;
+        }
+
+        .form-select,
+        .form-control {
+            background-color: #E3FEF7;
+            color: #003C43;
+        }
+
+        .form-select:focus,
+        .form-control:focus {
+            border-color: #003C43;
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background-color: #135D66;
+            border: none;
+            color: #E3FEF7;
+            padding: 10px 20px;
+            transition: 0.3s background-color;
+        }
+
+        .btn-primary:hover {
+            background-color: #003C43;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            margin-top: auto;
         }
     </style>
 </head>
@@ -228,6 +159,11 @@
                             <a class="nav-link mx-lg-2 {{ Request::is('hoteles') ? 'active' : '' }}"
                                 href="{{ route('hoteles') }}">Hoteles</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 {{ Request::is('reservacion') ? 'active' : '' }}"
+                                href="{{ route('reservacion') }}">Reservas</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -239,10 +175,19 @@
         </div>
     </nav>
 
+    <main>
+        @yield('contenido')
+    </main>
+
+    <footer class="footer">
+        Turistas de Mapas - Tu guía de viajes online
+        <br>
+        © 2024 Turistas de Mapas. Todos los derechos reservados.
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    @yield('contenido')
 </body>
 
 </html>
