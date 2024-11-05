@@ -23,17 +23,17 @@
 
         <div class="mb-3">
             <label  class="form-label">Correo: </label>
-            <input type="text" class="form-control" id='correo' name='correo'>
+            <input type="mail" class="form-control" id='correo' name='correo' >
         </div>
 
         <div class="mb-3">
             <label class="form-label">Contraseña: </label>
-            <input type="text" class="form-control" id='contraseña' name='contraseña'>
+            <input type="password" class="form-control" id='contraseña' name='contraseña' >
         </div>                
 
         <div class="mb-3">
             <label  class="form-label">Edad: </label>
-            <input type="text" class="form-control"  id='Edad' name='Edad'>
+            <input type="number" class="form-control"  id='Edad' name='Edad' >
         </div>
 
 
@@ -42,7 +42,31 @@
 
 
 </div>
-
+@if(session('exito'))
+    <script>
+        Swal.fire({
+            title: '¡Registro exitoso!',
+            text: "{{ session('exito') }}",
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+@if($errors->any())
+    <script>
+        Swal.fire({
+            title: 'Errores en el formulario',
+            html: `
+                <ul style="text-align: left;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            `,
+            icon: 'error',
+        });
+    </script>
+@endif
 
 </body>
 </html>

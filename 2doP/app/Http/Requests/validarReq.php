@@ -22,10 +22,9 @@ class validarReq extends FormRequest
     public function rules(): array
     {
         return [
-            'correo' => 'required'|'mail',
-            'contraseñña' => 'required'|'password',
-            'edad'=>'required'|'numeric'
-
+            'correo' => 'required|email',
+            'contraseña' => 'required|string',
+            'edad'=>'numeric|'
         ];
     }
 }

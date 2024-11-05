@@ -7,10 +7,14 @@ use App\Http\Requests\validarReq;
 
 class controladorReq extends Controller
 {
+    public function form(){
+        return view('form');
+    }
     public function procesarReq(validarReq $peticionValidada)
-{
-    $correo = $peticionValidada->input('correo');
-    session()->flash('exito', 'Se valido el correo: ' . $correo);
-    return to_route('formUsuarios');
-}
+    {
+        $correo = $peticionValidada->input('correo');
+        session()->flash('exito', 'Se valido el correo: ' . $correo);
+        return to_route('rutaform');
+    }
+
 }
