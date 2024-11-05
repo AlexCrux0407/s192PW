@@ -52,4 +52,30 @@
         document.getElementById('totalPrecio').innerText = `Total: $${total}`;
     }
 </script>
+
+@if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Reservación Exitosa!',
+            text: "{{ session('success') }}",
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+
+@if($errors->any())
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Errores de Validación',
+            html: `<ul style="text-align: left;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                   </ul>`,
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
 @endsection

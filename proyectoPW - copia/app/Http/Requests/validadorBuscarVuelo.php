@@ -24,7 +24,9 @@ class validadorBuscarVuelo extends FormRequest
         return [
             'origen' => 'required|string|max:50',
             'destino' => 'required|string|max:50|different:origen',
-            'fecha' => 'required|date|after_or_equal:today',
+            'fecha_salida' => 'required|date|after_or_equal:today',
+            'fecha_regreso' => 'nullable|date|after:fecha_salida',
+
         ];
     }
     public function messages()

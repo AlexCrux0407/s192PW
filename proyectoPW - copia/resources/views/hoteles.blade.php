@@ -36,4 +36,31 @@
     </div>
 </div>
 
+@if(session('success_hotel'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Éxito!',
+            text: "{{ session('success_hotel') }}",
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
+
+@if (session('errors_hotel'))
+    <script>
+        Swal.fire({
+            title: 'Errores de Validación',
+            html: `
+                <ul style="text-align: left;">
+                    @foreach (session('errors_hotel')->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            `,
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+@endif
 @endsection

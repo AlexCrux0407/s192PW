@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\validadorBuscarHotel;
 use App\Http\Requests\validadorBuscarVuelo;
 use App\Http\Requests\validadorConsultarReserva;
+use App\Http\Requests\validarReserva;
+
 use Illuminate\Http\Request;
 use Validator;
 
@@ -65,6 +67,6 @@ class controladorTurista extends Controller
     public function reservarServicio(Request $request)
     {
         $total = ($request->vuelo_precio * $request->num_pasajeros) + ($request->hotel_precio * $request->num_noches);
-        return back()->with('success', "Reservación realizada con éxito. Total a pagar: $${total}");
+        return back()->with('success', "Reservación realizada con éxito. ");
     }
 }
