@@ -46,32 +46,4 @@
     </div>
 </div>
 
-
-@if (session('success_vuelo'))
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: '¡Éxito!',
-            text: "{{ session('success_vuelo') }}",
-            confirmButtonText: 'Aceptar'
-        });
-    </script>
-@endif
-
-@if (session('errors_vuelo'))
-    <script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Errores de Validación',
-            html: `
-                <ul style="text-align: left;">
-                    @foreach (session('errors_vuelo')->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            `,
-            confirmButtonText: 'Aceptar'
-        });
-    </script>
-@endif
 @endsection

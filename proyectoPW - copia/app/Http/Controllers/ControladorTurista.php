@@ -20,8 +20,8 @@ class controladorTurista extends Controller
         }
     }
     
-    
-    public function buscarHotel(Request $request) {
+    public function buscarHotel(Request $request)
+    {
         $validator = Validator::make($request->all(), (new validadorBuscarHotel)->rules());
         if ($validator->fails()) {
             session()->flash('errors_hotel', $validator->errors());
@@ -30,7 +30,8 @@ class controladorTurista extends Controller
         return redirect()->back()->with('success_hotel', 'Hotel encontrado satisfactoriamente.');
     }
     
-    public function consultarReserva(Request $request) {
+    public function consultarReserva(Request $request)
+    {
         $validator = Validator::make($request->all(), (new validadorConsultarReserva)->rules());
         if ($validator->fails()) {
             session()->flash('errors_reserva', $validator->errors());
@@ -38,6 +39,7 @@ class controladorTurista extends Controller
         }
         return redirect()->back()->with('success_reserva', 'Reserva encontrada exitosamente.');
     }
+    
     public function procesarLogin(Request $request)
     {
         $request->validate([
@@ -47,6 +49,7 @@ class controladorTurista extends Controller
 
         return redirect()->route('inicio')->with('success', 'Inicio de sesión exitoso');
     }
+
     public function procesarRegistro(Request $request)
     {
         $request->validate([
@@ -58,9 +61,10 @@ class controladorTurista extends Controller
 
         return redirect()->route('inicio')->with('success', 'Registro exitoso');
     }
-    public function reservarServicio(Request $request) {
+
+    public function reservarServicio(Request $request)
+    {
         $total = ($request->vuelo_precio * $request->num_pasajeros) + ($request->hotel_precio * $request->num_noches);
         return back()->with('success', "Reservación realizada con éxito. Total a pagar: $${total}");
     }
-    
 }
