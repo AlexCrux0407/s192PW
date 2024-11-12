@@ -45,8 +45,8 @@ class controladorTurista extends Controller
     public function procesarLogin(Request $request)
     {
         $request->validate([
-            'usuario' => 'required',
-            'contraseña' => 'required',
+            'usuario' => 'required|string',
+            'contraseña' => 'required|string|min:6',
         ]);
 
         return redirect()->route('inicio')->with('success', 'Inicio de sesión exitoso');
@@ -55,10 +55,10 @@ class controladorTurista extends Controller
     public function procesarRegistro(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
+            'nombre' => 'required|string|min:3',
             'email' => 'required|email',
-            'usuario' => 'required',
-            'contraseña' => 'required|min:6',
+            'usuario' => 'required|string',
+            'contraseña' => 'required|string|min:6',
         ]);
 
         return redirect()->route('inicio')->with('success', 'Registro exitoso');

@@ -28,12 +28,10 @@
             position: fixed;
             top: 0;
             width: 100%;
-
             background-color: #E3FEF7;
             height: 60px;
-            margin: 20px;
-            border-radius: 16px;
             padding: 0.3rem;
+            border-radius: 0 0 16px 16px;
         }
 
         .navbar-brand,
@@ -66,7 +64,6 @@
         .nav-link {
             color: #135D66;
             font-weight: 500;
-            position: relative;
         }
 
         .nav-link:hover,
@@ -75,12 +72,17 @@
             font-weight: bold;
         }
 
+        .main-content {
+            padding-top: 100px;
+            padding-bottom: 40px;
+        }
+
         .card {
             background-color: #135D66;
             color: #E3FEF7;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 15px 0;
+            margin: 20px 0;
             padding: 20px;
         }
 
@@ -90,7 +92,7 @@
             font-weight: 500;
         }
 
-        .card-body .form-label {
+        .form-label {
             color: #E3FEF7;
             font-weight: 500;
         }
@@ -132,6 +134,15 @@
             text-align: center;
             margin-top: auto;
         }
+
+        .equal-height {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .equal-height .card {
+            flex: 1;
+        }
     </style>
 </head>
 
@@ -163,7 +174,6 @@
                             <a class="nav-link mx-lg-2 {{ Request::is('reservacion') ? 'active' : '' }}"
                                 href="{{ route('reservacion') }}">Reservas</a>
                         </li>
-
                     </ul>
                 </div>
             </div>
@@ -175,7 +185,7 @@
         </div>
     </nav>
 
-    <main>
+    <main class="main-content container">
         @yield('contenido')
     </main>
 
