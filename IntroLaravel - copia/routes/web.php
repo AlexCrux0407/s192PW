@@ -2,21 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\controladorVistas;
-use App\Http\Controllers\clienteController;
-
-
-//controlador vistas
 
 Route::get('/',[controladorVistas::class, 'home'])->name('rutainicio');
+Route::get('/form', [controladorVistas::class, 'formulario'])->name('rutaformulario');
 Route::get('/clientes', [controladorVistas::class, 'consulta'])->name('rutaclientes');
 Route::view('/componentes','componentes')->name(name: 'rutacomponentes');
 Route::post('/enviarCliente',[controladorVistas::class, 'procesarcliente'])->name('rutaEnviar');
-
-
-
-//controlador vistas
-Route::get('/cliente/create', [clienteController::class, 'create'])->name('rutaformulario');
-Route::post('/cliente', [clienteController::class,'store'])->name('enviaCliente');
 
 
 //ruta de tipo GET
