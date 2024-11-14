@@ -8,7 +8,6 @@ use App\Http\Controllers\clienteController;
 //controlador vistas
 
 Route::get('/',[controladorVistas::class, 'home'])->name('rutainicio');
-Route::get('/clientes', [controladorVistas::class, 'consulta'])->name('rutaclientes');
 Route::view('/componentes','componentes')->name(name: 'rutacomponentes');
 Route::post('/enviarCliente',[controladorVistas::class, 'procesarcliente'])->name('rutaEnviar');
 
@@ -17,6 +16,8 @@ Route::post('/enviarCliente',[controladorVistas::class, 'procesarcliente'])->nam
 //controlador vistas
 Route::get('/cliente/create', [clienteController::class, 'create'])->name('rutaformulario');
 Route::post('/cliente', [clienteController::class,'store'])->name('enviaCliente');
+Route::get('/clientes', [clienteController::class, 'index'])->name('rutaclientes');
+
 
 
 //ruta de tipo GET
