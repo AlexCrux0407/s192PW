@@ -1,10 +1,10 @@
 @extends('layouts.plantilla1')
-@section('titulo','Clientes')
+@section('titulo', 'Clientes')
 
 @section('contenido')
 
-    {{-- Inicia tarjetaCliente --}}
-    <div class="container mt-5 col-md-8">
+{{-- Inicia tarjetaCliente --}}
+<div class="container mt-5 col-md-8">
 
     @foreach ($consultaClientes as $cliente)
         <div class="card text-justify font-monospace">
@@ -21,12 +21,31 @@
                 <p class="card-text fw-lighter"></p>
             </div>
             <div class="card-footer text-muted">
-                <button type="submit" class="btn btn-warning btn-sm">{{__('Actualizar')}}</button>
-                <button type="submit" class="btn btn-danger btn-sm">{{__('Eliminar')}}</button>
+                <form action="{{ route('update', $cliente->id) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" class="btn btn-warning btn-sm">
+                        Actualizar
+                    </button>
+                </form>
+                <a href="{{ route('edit', $cliente->id) }}" button type="submit"
+                    class="btn btn-success btn-sm">{{__('Editar')}}</a></button>
+                <form action="{{ route('delete', $cliente->id) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm"
+                        onclick="return confirm('¿Estás seguro de eliminar este cliente?')">
+                        Eliminar
+                    </button>
+                </form>
+
             </div>
         </div>
-        @endforeach
-    </div>
+    @endforeach
+</div>
+@session('success')
+<x-Alert tipo='success'> {{session('success')}} </x-Alert>
+    @endsession
 
-    {{-- Finaliza tarjetaCliente --}}
+{{-- Finaliza tarjetaCliente --}}
 @endsection

@@ -13,11 +13,15 @@ Route::post('/enviarCliente',[controladorVistas::class, 'procesarcliente'])->nam
 
 
 
-//controlador vistas
+//controlador cliente
 Route::get('/cliente/create', [clienteController::class, 'create'])->name('rutaformulario');
 Route::post('/cliente', [clienteController::class,'store'])->name('enviaCliente');
 Route::get('/clientes', [clienteController::class, 'index'])->name('rutaclientes');
 
+
+Route::get('/clientes{id}/edit', [clienteController::class,'edit'])->name('edit');
+Route::put('/clientes{id}', [clienteController::class,'update'])->name('update');
+Route::delete('/clientes{id}', [clienteController::class,'destroy'])->name('delete');
 
 
 //ruta de tipo GET

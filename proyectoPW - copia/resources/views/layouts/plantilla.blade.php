@@ -20,7 +20,8 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: #77B0AA;
+            background: #B6BBC4;
+            /* Fondo general */
         }
 
         .navbar {
@@ -28,48 +29,49 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: #E3FEF7;
+            background-color: #161A30;
+            color: #F0ECE5;
             height: 60px;
             padding: 0.3rem;
             border-radius: 0 0 16px 16px;
+            
         }
 
-        .navbar-brand,
-        .offcanvas-title {
+        .navbar-brand {
             font-weight: 500;
-            color: #003C43;
+            color: #F0ECE5;
             font-size: 24px;
-            transition: 0.3s color;
         }
+
+        .nav-link {
+        color: #F0ECE5; /* Color de los enlaces del navbar */
+        font-weight: 500;
+        transition: 0.3s;
+        }
+
+        .nav-link:hover {
+        color: #B6BBC4; /* Color gris claro al pasar el mouse */
+        font-weight: bold;
+        }
+
+        .nav-link.active {
+        color: white; /* Azul claro para el enlace activo */
+        font-weight: bold;
+        text-decoration: underline; 
+        }
+
 
         .login-button {
-            background-color: #135D66;
-            color: white;
+            background-color: #31304D;
+            color: #F0ECE5;
             font-size: 10px;
             padding: 8px 20px;
             border-radius: 50px;
             text-decoration: none;
-            transition: 0.3s background-color;
         }
 
         .login-button:hover {
-            background-color: #003C43;
-        }
-
-        .navbar-toggler {
-            border: none;
-            font-size: 1.25rem;
-        }
-
-        .nav-link {
-            color: #135D66;
-            font-weight: 500;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: #003C43;
-            font-weight: bold;
+            background-color: #161A30;
         }
 
         .main-content {
@@ -78,8 +80,9 @@
         }
 
         .card {
-            background-color: #135D66;
-            color: #E3FEF7;
+            background-color: #31304D;
+            /* Fondo de las tarjetas */
+            color: #F0ECE5;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 20px 0;
@@ -88,62 +91,55 @@
 
         .card h4 {
             text-align: center;
-            color: #E3FEF7;
+            color: #F0ECE5;
             font-weight: 500;
         }
 
         .form-label {
-            color: #E3FEF7;
+            color: #F0ECE5;
             font-weight: 500;
         }
 
         .form-select,
-        .form-control,
-        .btn {
-            border-radius: 10px;
-        }
-
-        .form-select,
         .form-control {
-            background-color: #E3FEF7;
-            color: #003C43;
+            background-color: #F0ECE5;
+            color: #31304D;
+            border-radius: 10px;
+            padding: 8px;
         }
 
         .form-select:focus,
         .form-control:focus {
-            border-color: #003C43;
+            border-color: #31304D;
             box-shadow: none;
         }
 
         .btn-primary {
-            background-color: #135D66;
+            background-color: #161A30;
             border: none;
-            color: #E3FEF7;
+            color: #F0ECE5;
             padding: 10px 20px;
-            transition: 0.3s background-color;
+            border-radius: 10px;
         }
 
         .btn-primary:hover {
-            background-color: #003C43;
+            background-color: #31304D;
         }
 
         .footer {
-            background-color: #333;
-            color: white;
+            background-color: #161A30;
+            color: #F0ECE5;
             padding: 1rem;
             text-align: center;
             margin-top: auto;
         }
 
-        .equal-height {
-            display: flex;
-            align-items: stretch;
-        }
-
-        .equal-height .card {
-            flex: 1;
+        .img-fluid {
+            border-radius: 5px;
+            border: 2px solid #31304D;
         }
     </style>
+
 </head>
 
 <body>
@@ -182,6 +178,7 @@
                 data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
         </div>
     </nav>
 
@@ -189,15 +186,13 @@
         @yield('contenido')
     </main>
 
-    <footer class="footer">
-        Turistas de Mapas - Tu guía de viajes online
-        <br>
-        © 2024 Turistas de Mapas. Todos los derechos reservados.
-    </footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    @include('layouts.footer')
+
 </body>
 
 </html>

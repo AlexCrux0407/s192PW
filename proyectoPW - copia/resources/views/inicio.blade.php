@@ -5,10 +5,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turista sin Mapas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        .card-body {
-            background-color: #135D66;
+        .body {
+            background-color: #B6BBC4;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .album {
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        .card {
+            background-color: #31304D;
+            color: #F0ECE5;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card h4 {
+            text-align: center;
             font-weight: 500;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-select,
+        .form-control {
+            border-radius: 5px;
+            background-color: #F0ECE5;
+            color: #31304D;
+        }
+
+        .form-select:focus,
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #B6BBC4;
+        }
+
+        .btn-primary {
+            background-color: #161A30;
+            color: #F0ECE5;
+            border-radius: 5px;
+            padding: 0.8rem;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background-color: #31304D;
+        }
+
+        .row-cols-1 .col {
+            margin-bottom: 1.5rem;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .carousel-caption h5 {
+            color: #F0ECE5;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .carousel-caption p {
+            color: #F0ECE5;
+            font-size: 18px;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(1);
+            
+        }
+
+        .carousel {
+            margin: 50px auto;
+            max-width: 800px;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -19,28 +114,60 @@
 
     <main>
         <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-8 mx-auto">
-                    <h1 class="fw-light">Destinos Populares</h1>
-                    <p class="lead text-muted">Explora los destinos más emocionantes y planea tu próxima aventura.</p>
-                    <div class="d-flex justify-content-center">
-                        <img src="{{ asset('images/destinos/destino1.jpg') }}" alt="Destino 1" class="img-fluid mx-2"
-                            style="width: 150px; height: 100px;">
-                        <img src="{{ asset('images/destinos/destino2.jpg') }}" alt="Destino 2" class="img-fluid mx-2"
-                            style="width: 150px; height: 100px;">
-                        <img src="{{ asset('images/destinos/destino3.jpg') }}" alt="Destino 3" class="img-fluid mx-2"
-                            style="width: 150px; height: 100px;">
+            <<div class="container">
+        <h1 class="text-center my-5">Destinos populares</h1>
+        <div id="destinosCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Primera imagen -->
+                <div class="carousel-item active">
+                    <img src="{{ asset('images/destinos/destino1.jpg') }}" class="d-block w-100" alt="Buenos Aires">
+                    <div class="carousel-caption">
+                        <h5>Buenos Aires, Argentina</h5>
+                        <p>Vuelos desde 4,552 $</p>
+                    </div>
+                </div>
+                <!-- Segunda imagen -->
+                <div class="carousel-item">
+                    <img src="{{ asset('images/destinos/destino2.jpg') }}" class="d-block w-100" alt="Lima">
+                    <div class="carousel-caption">
+                        <h5>Lima, Perú</h5>
+                        <p>Vuelos desde 3,299 $</p>
+                    </div>
+                </div>
+                <!-- Tercera imagen -->
+                <div class="carousel-item">
+                    <img src="{{ asset('images/destinos/destino3.jpg') }}" class="d-block w-100" alt="Bogotá">
+                    <div class="carousel-caption">
+                        <h5>Bogotá, Colombia</h5>
+                        <p>Vuelos desde 3,800 $</p>
                     </div>
                 </div>
             </div>
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#destinosCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#destinosCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
         </section>
 
 
 
-        <div class="album py-5 bg-light">
+        <div class="album bg-light">
             <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                    
                     <div class="col">
+                        
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h4 class="text-center">Buscar un vuelo</h4>
@@ -202,6 +329,7 @@
                                 <button type="submit" class="btn btn-primary w-100 mt-3">Buscar hotel</button>
                             </form>
                         </div>
+                    </div>
                     </div>
 
 

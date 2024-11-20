@@ -9,7 +9,7 @@ use App\Http\Requests\validarReserva;
 use Illuminate\Http\Request;
 use Validator;
 
-class controladorTurista extends Controller
+class ControladorTurista extends Controller
 {
     public function buscarVuelo(validadorBuscarVuelo $request)
     {

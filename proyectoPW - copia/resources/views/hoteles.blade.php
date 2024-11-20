@@ -34,8 +34,8 @@
             </div>
         </div>
     </div>
-</div>
 
+</div>
 @if(session('success_hotel'))
     <script>
         Swal.fire({
@@ -63,4 +63,8 @@
         });
     </script>
 @endif
+
 @endsection
+
+
+
