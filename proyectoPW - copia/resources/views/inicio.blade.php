@@ -118,7 +118,6 @@
         <h1 class="text-center my-5">Destinos populares</h1>
         <div id="destinosCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <!-- Primera imagen -->
                 <div class="carousel-item active">
                     <img src="{{ asset('images/destinos/destino1.jpg') }}" class="d-block w-100" alt="Buenos Aires">
                     <div class="carousel-caption">
@@ -126,7 +125,6 @@
                         <p>Vuelos desde 4,552 $</p>
                     </div>
                 </div>
-                <!-- Segunda imagen -->
                 <div class="carousel-item">
                     <img src="{{ asset('images/destinos/destino2.jpg') }}" class="d-block w-100" alt="Lima">
                     <div class="carousel-caption">
@@ -134,7 +132,6 @@
                         <p>Vuelos desde 3,299 $</p>
                     </div>
                 </div>
-                <!-- Tercera imagen -->
                 <div class="carousel-item">
                     <img src="{{ asset('images/destinos/destino3.jpg') }}" class="d-block w-100" alt="Bogotá">
                     <div class="carousel-caption">
@@ -143,7 +140,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Controles del carrusel -->
             <button class="carousel-control-prev" type="button" data-bs-target="#destinosCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Anterior</span>
@@ -264,6 +260,7 @@
                                 @csrf
                                 <label for="ciudad" class="form-label">Ciudad</label>
                                 <select id="ciudad" name="ciudad" class="form-select">
+                                <option selected>Seleccione una ciudad</option>
                                     <option value="Buenos Aires">Buenos Aires</option>
                                     <option value="Bogotá">Bogotá</option>
                                     <option value="Lima">Lima</option>

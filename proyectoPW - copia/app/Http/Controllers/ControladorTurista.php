@@ -11,6 +11,10 @@ use Validator;
 
 class ControladorTurista extends Controller
 {
+    public function inicio()
+    {
+        return view('inicio'); 
+    }
     public function buscarVuelo(validadorBuscarVuelo $request)
     {
         $vueloDisponible = true;

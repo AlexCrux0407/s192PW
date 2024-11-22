@@ -16,7 +16,7 @@ class AuthController extends Controller
     }
     public function register()
     {
-    return view('auth.registro');
+        return view('auth.registro');
     }
 
     // Procesar inicio de sesión
@@ -46,19 +46,20 @@ class AuthController extends Controller
             'nombre' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users',
             'usuario' => 'required|string|max:255|unique:users',
-            'contraseña' => 'required|string|min:8|',
+            'contraseña' => 'required|string|min:8',
         ]);
 
         User::create([
-            'nombre' => $request->name,
+            'name' => $request->nombre, 
             'email' => $request->email,
             'usuario' => $request->usuario,
-            'contraseña' => Hash::make($request->password),
-            'rol' => 'usuario', // Asigna el rol predeterminado
+            'password' => Hash::make($request->contraseña), 
+            'rol' => 'usuario',
         ]);
 
         return redirect()->route('login')->with('success', '¡Registro exitoso! Ahora puedes iniciar sesión.');
     }
+
 
 
 }
